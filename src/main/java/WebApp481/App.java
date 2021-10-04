@@ -40,7 +40,13 @@ public class App {
           String input2 = req.queryParams("input2").replaceAll("\\s","");
           int input2AsInt = Integer.parseInt(input2);
 
-          boolean result = App.search(inputList, input2AsInt);
+          String input3 = req.queryParams("input3").replaceAll("\\s","");
+          int input3AsInt = Integer.parseInt(input3);
+
+          String input4 = req.queryParams("input4").replaceAll("\\s","");
+          int input4AsInt = Integer.parseInt(input4);
+
+          boolean result = App.game(inputList, input2AsInt,input3AsInt,input4AsInt);
 
           Map<String, Boolean> map = new HashMap<String, Boolean>();
           map.put("result", result);
@@ -57,15 +63,24 @@ public class App {
             new MustacheTemplateEngine());
 
     }
-    public static boolean search(ArrayList<Integer> array, int e) {
-        System.out.println("inside search");
-        if (array == null) return false;
-  
-        for (int elt : array) {
-          if (elt == e) return true;
+    
+ /*This is a number guessing game.
+  You decide the ranges (for example 1 <= x <= 10 min=1 max=10) and computer generates 
+  a random number within your range. Then you type your guesses (arraylist) (maximum n guesses.)*/
+      public static boolean game(ArrayList<Integer> a,int size,int min,int max){
+        if (a==null) return false;
+        if(a.size()!=size) return false;
+        if (min>max) return false;
+        if(size>=(max-min)) return false;
+        if(min<0 || max<0) return false;
+        Random rand= new Random();
+        int x = rand.nextInt(max)+min;
+        for(int i=0;i<a.size();i++){
+          if(a.get(i)==x) return true;
         }
         return false;
       }
+      
       static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {

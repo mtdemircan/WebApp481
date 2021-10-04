@@ -1,11 +1,22 @@
 <title>My application</title>
-  <h1>Hello, World!</h1>
-    Result is {{result}}
+  <h1>Hello,</h1>
+  This is a number guessing game.
+  You decide the ranges (for example 1 <= x <= 10 min=1 max=10) and computer generates 
+  a random number within your range. Then you type your guesses in the first box (maximum n guesses.)
+
+  -The first input box takes n elements (your guesses).
+  -The second box takes the number of elements(n) that you typed to box1.
+  -The third box takes minimum number for range.
+  -The fourth box takes maximum number for range.
+
+    Your guess is {{result}}
 
 
   <form action="compute" method="post">
-        <textarea name="input1" rows="10" cols="30"></textarea>
-        <textarea name="input2" rows="10" cols="30"></textarea>
+        <textarea name="input1" rows="10" cols="20"></textarea>
+        <textarea name="input2" rows="10" cols="20"></textarea>
+        <textarea name="input3" rows="10" cols="20"></textarea>
+        <textarea name="input4" rows="10" cols="20"></textarea>
         <br>
         <input type="submit">
   </form>

@@ -7,31 +7,32 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test 
+    public void appHasAGreeting() {
+      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      assertFalse(App.game(array, 4,1,3));
     }
     @Test
-   public void testFound() {
+   public void sizeNotEqual() {
       ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertTrue(App.search(array, 4));
+      assertFalse(App.game(array, 3,1,10));
     }
 
     @Test
-    public void testNotFound() {
+    public void notpositive() {
       ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertFalse(App.search(array, 5));
+      assertFalse(App.game(array, 4,-1,10));
     }
 
     @Test
-    public void testEmptyArray() {
-      ArrayList<Integer> array = new ArrayList<>();
-      assertFalse(App.search(array, 1));
+    public void minmaxError() {
+      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      assertFalse(App.game(array, 4,10,1));
     }
 
     @Test
     public void testNull() {
-      assertFalse(App.search(null, 1));
+      assertFalse(App.game(null, 1,1,10));
     }
 
 }
